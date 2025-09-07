@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/pharmacase/static/css/main.031876b6.css",
-    "main.js": "/pharmacase/static/js/main.95427649.js",
+    "main.js": "/pharmacase/static/js/main.60612448.js",
     "index.html": "/pharmacase/index.html",
     "main.031876b6.css.map": "/pharmacase/static/css/main.031876b6.css.map",
-    "main.95427649.js.map": "/pharmacase/static/js/main.95427649.js.map"
+    "main.60612448.js.map": "/pharmacase/static/js/main.60612448.js.map"
   },
   "entrypoints": [
     "static/css/main.031876b6.css",
-    "static/js/main.95427649.js"
+    "static/js/main.60612448.js"
   ]
 }

@@ -9,6 +9,9 @@ export default function SiteNavbar() {
   const initialQ = new URLSearchParams(search).get("q") || "";
   const [q, setQ] = useState(initialQ);
 
+  // ✅ Navbar expanded state
+  const [expanded, setExpanded] = useState(false);
+
   useEffect(() => {
     setQ(initialQ);
   }, [initialQ]);
@@ -16,31 +19,44 @@ export default function SiteNavbar() {
   const onSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?q=${encodeURIComponent(q)}`);
+    setExpanded(false); // close navbar after search
   };
 
   return (
     <>
-      <Navbar expand="lg" className="custom-navbar" sticky="top">
+      <Navbar
+        expand="lg"
+        className="custom-navbar"
+        sticky="top"
+        expanded={expanded}
+      >
         <Container>
-          <Navbar.Brand as={Link} to="/" className="brand-text">
+          <Navbar.Brand
+            as={Link}
+            to="/"
+            className="brand-text"
+            onClick={() => setExpanded(false)} // ✅ close navbar on brand click
+          >
             PHARMACASE <span>Solution</span>
           </Navbar.Brand>
-          <Navbar.Toggle />
+          <Navbar.Toggle
+            onClick={() => setExpanded(expanded ? false : true)}
+          />
           <Navbar.Collapse>
             <Nav className="ms-auto nav-links">
-              <Nav.Link as={NavLink} to="/" end>
+              <Nav.Link as={NavLink} to="/" end onClick={() => setExpanded(false)}>
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/services">
+              <Nav.Link as={NavLink} to="/services" onClick={() => setExpanded(false)}>
                 Services
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/industries">
+              <Nav.Link as={NavLink} to="/industries" onClick={() => setExpanded(false)}>
                 Industries
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/about">
+              <Nav.Link as={NavLink} to="/about" onClick={() => setExpanded(false)}>
                 About
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/contact">
+              <Nav.Link as={NavLink} to="/contact" onClick={() => setExpanded(false)}>
                 Contact
               </Nav.Link>
             </Nav>
@@ -62,7 +78,7 @@ export default function SiteNavbar() {
 
       {/* ✅ Floating WhatsApp Button */}
       <a
-        href="https://wa.me/917016978006?text=Hello%20MedReg%20India%20Team,%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+        href="https://wa.me/917567110545?text=Hello%20MedReg%20India%20Team,%20I%20would%20like%20to%20know%20more%20about%20your%20services."
         className="whatsapp-float"
         target="_blank"
         rel="noopener noreferrer"
@@ -70,7 +86,7 @@ export default function SiteNavbar() {
         💬
       </a>
 
-      {/* Custom CSS inside same file */}
+      {/* ✅ Your CSS remains unchanged */}
       <style jsx>{`
         .custom-navbar {
           background: linear-gradient(90deg, #6d28d9, #db2777); /* Purple → Pink */
